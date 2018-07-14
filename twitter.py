@@ -8,6 +8,9 @@ from nltk.corpus import *
 nltk.download('stopwords')
 from collections import Counter
 import flag
+oauth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+oauth.set_access_token(access_token, access_secret)
+api = tweepy.API(oauth)
 def display_menu():
     global flag
     message = str
@@ -50,7 +53,7 @@ def display_menu():
             print("Enter a valid value!")
             display_menu()
 
-
+#putting on the hashtag
 def query():
     global tweets
     tweet_input = input("For which hashtag do you want to see the tweets? (Do not include #)")
@@ -64,7 +67,7 @@ def Get_Search():
     json_str = json.dumps(status._json,indent=4,sort_keys=True)
     print(json_str)
 
-
+#counting followers
 def fcount():
     query()
     print("UserName      Follower Count")
